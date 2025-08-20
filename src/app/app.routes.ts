@@ -5,6 +5,7 @@ export const routes: Routes = [
   {
     path: '/',
     redirectTo: '/contacts',
+    pathMatch: 'full',
   },
   {
     path: 'contacts',

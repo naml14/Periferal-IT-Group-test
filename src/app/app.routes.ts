@@ -3,7 +3,9 @@ import { Contacts } from './components/contacts/contacts';
 
 export const routes: Routes = [
   {
-    path: '/',
+    path: '',
+    component: Contacts,
+    title: 'Gestión de Contactos',
     redirectTo: '/contacts',
     pathMatch: 'full',
   },

@@ -3,7 +3,7 @@ import { Contacts } from './components/contacts/contacts';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: '/',
     redirectTo: '/contacts',
   },
   {

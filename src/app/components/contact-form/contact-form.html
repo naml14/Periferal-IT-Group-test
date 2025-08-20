@@ -1,0 +1,73 @@
+<div class="contact-form-container">
+  <h2>{{ isEditing() ? 'Editar Contacto' : 'Agregar Nuevo Contacto' }}</h2>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+    <div class="form-group">
+      <label for="name">Nombre completo *</label>
+      <input type="text" id="name" formControlName="name" class="form-control"
+        [class.error]="nameControl.invalid && nameControl.touched" placeholder="Ingresa el nombre completo">
+      @if (nameControl.invalid && nameControl.touched) {
+      <div class="error-message">
+        @if (nameControl.errors?.['required']) {
+        El nombre es requerido
+        }
+        @if (nameControl.errors?.['minlength']) {
+        El nombre debe tener al menos 2 caracteres
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" formControlName="email" class="form-control"
+        [class.error]="emailControl.invalid && emailControl.touched" placeholder="ejemplo@correo.com">
+      @if (emailControl.invalid && emailControl.touched) {
+      <div class="error-message">
+        @if (emailControl.errors?.['required']) {
+        El email es requerido
+        }
+        @if (emailControl.errors?.['email']) {
+        Ingresa un email válido
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Teléfono *</label>
+      <input type="tel" id="phone" formControlName="phone" class="form-control"
+        [class.error]="phoneControl.invalid && phoneControl.touched" placeholder="+1 234 567 8900">
+      @if (phoneControl.invalid && phoneControl.touched) {
+      <div class="error-message">
+        @if (phoneControl.errors?.['required']) {
+        El teléfono es requerido
+        }
+        @if (phoneControl.errors?.['pattern']) {
+        Ingresa un número de teléfono válido
+        }
+      </div>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid || isSubmitting()">
+        @if (isSubmitting()) {
+        Guardando...
+        } @else {
+        {{ isEditing() ? 'Actualizar' : 'Agregar' }} Contacto
+        }
+      </button>
+
+      @if (isEditing()) {
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">
+        Cancelar
+      </button>
+      }
+
+      <button type="button" class="btn btn-outline" (click)="onReset()">
+        Limpiar
+      </button>
+    </div>
+  </form>
+</div>

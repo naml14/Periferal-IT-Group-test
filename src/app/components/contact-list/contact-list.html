@@ -1,0 +1,52 @@
+<div class="contact-list-container">
+  <div class="list-header">
+    <h2>Lista de Contactos</h2>
+    @if (contacts().length > 0) {
+    <span class="contact-count">{{ contacts().length }} contacto{{ contacts().length !== 1 ? 's' : '' }}</span>
+    }
+  </div>
+
+  @if (contacts().length === 0) {
+  <div class="empty-state">
+    <div class="empty-icon">📱</div>
+    <h3>No hay contactos</h3>
+    <p>{{ emptyMessage() }}</p>
+  </div>
+  } @else {
+  <div class="contacts-grid">
+    @for (contact of contacts(); track contact.id) {
+    <div class="contact-card" [attr.data-contact-id]="contact.id">
+      <div class="contact-header">
+        <div class="contact-avatar">
+          {{ getInitials(contact.name) }}
+        </div>
+        <div class="contact-info">
+          <h3 class="contact-name">{{ contact.name }}</h3>
+          <p class="contact-email">{{ contact.email }}</p>
+        </div>
+      </div>
+
+      <div class="contact-details">
+        <div class="contact-phone">
+          <span class="label">📞 Teléfono:</span>
+          <span class="value">{{ contact.phone }}</span>
+        </div>
+        <div class="contact-date">
+          <span class="label">📅 Agregado:</span>
+          <span class="value">{{ formatDate(contact.createdAt) }}</span>
+        </div>
+      </div>
+
+      <div class="contact-actions">
+        <button type="button" class="btn btn-edit" (click)="onEditContact(contact)" title="Editar contacto">
+          ✏️ Editar
+        </button>
+        <button type="button" class="btn btn-delete" (click)="onDeleteContact(contact)" title="Eliminar contacto">
+          🗑️ Eliminar
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  }
+</div>

@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+/*Configuraciones básicas*/
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Reset de márgenes para elementos de encabezado */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Reset de márgenes para párrafos */
+p {
+  margin: 0;
+}
+
+/* Estilos para botones base */
+button {
+  font-family: inherit;
+}
+
+/* Estilos para inputs base */
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Utilidades para responsive */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Animaciones suaves */
+* {
+  transition: none;
+}
+
+*:hover,
+*:focus {
+  transition: all 0.2s ease;
+}
+
+/* Focus styles para accesibilidad */
+*:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}

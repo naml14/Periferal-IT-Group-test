@@ -1,0 +1,36 @@
+<div class="contacts-app">
+  <main class="app-main">
+    <!-- Formulario de contactos -->
+    <app-contact-form (contactSubmitted)="onContactSubmitted($event)" (editCancelled)="onEditCancelled()"
+      #contactForm />
+
+    <!-- Barra de búsqueda (solo si hay contactos) -->
+    @if (contactService.contactCount() > 0) {
+    <app-search-bar (searchChanged)="onSearchChanged($event)" #searchBar />
+    }
+
+    <!-- Lista de contactos -->
+    <app-contact-list [contacts]="filteredContacts()" [emptyMessage]="getEmptyMessage()"
+      (editContact)="onEditContact($event)" (deleteContact)="onDeleteContact($event)" />
+
+    <!-- Acciones adicionales -->
+    @if (contactService.contactCount() > 0) {
+    <div class="app-actions">
+      <button type="button" class="btn btn-danger" (click)="onClearAllContacts()">
+        🗑️ Eliminar Todos los Contactos
+      </button>
+
+      <div class="app-stats">
+        <span class="stat">
+          <strong>Total:</strong> {{ contactService.contactCount() }} contactos
+        </span>
+        @if (searchTerm()) {
+        <span class="stat">
+          <strong>Filtrados:</strong> {{ filteredContacts().length }} contactos
+        </span>
+        }
+      </div>
+    </div>
+    }
+  </main>
+</div>

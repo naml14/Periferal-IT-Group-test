@@ -6,8 +6,8 @@ export const routes: Routes = [
     path: '',
     component: Contacts,
     title: 'Gestión de Contactos',
-    redirectTo: '/contacts',
-    pathMatch: 'full',
+    /* redirectTo: '/contacts',
+    pathMatch: 'full', */
   },
   {
     path: 'contacts',

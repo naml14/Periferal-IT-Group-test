@@ -29,7 +29,7 @@
             "ssr": {
               "entry": "src/server.ts"
             },
-            "outputPath": "dist/Periferal-IT-Group-test/browser/index.csr.html"
+            "outputPath": "dist/Periferal-IT-Group-test/browser"
           },
           "configurations": {
             "production": {
